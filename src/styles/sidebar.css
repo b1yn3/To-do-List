@@ -1,6 +1,12 @@
+:root{
+    --sidebar-button-hover: rgba(90, 87, 82, 0.2);
+}
+
 img {
     width: 25px;
 }
+
+/* USERNAME AND SIDEBAR TOGGLE */
 
 .top-buttons {
     width: 90%;
@@ -22,6 +28,8 @@ img {
     border: none;
 }
 
+/* DIFFERENT BUTTONS ON THE SIDE */
+
 .sidebar-button{
     display: flex;
     flex-direction: column;
@@ -42,7 +50,7 @@ img {
 .sidebar-button button:hover{
     border: 1px solid gray;
     border-radius: 5px;
-    background-color: rgb(224, 237, 248);
+    background-color: var(--sidebar-button-hover);
     
 
 }
@@ -50,6 +58,8 @@ img {
 .sidebar-button button img{
     width: 20px;
 }
+
+/* PROJECT STYLES */
 
 .project-list{
     display: flex;
