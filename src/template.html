@@ -34,7 +34,31 @@
             </div>
         </aside>
 
-        <main></main>
+        <main>
+            <div class="taskContainer">
+                <form action="">
+                    <input type="text" name="titletxt" id="titletxt" required>
+                    <textarea name="descriptiontxt" id="descriptiontxt" rows="4" required>Description</textarea>
+                    
+                    <div class="timeContainer">
+                        <div class="leftSide">
+                            <input type="date" id="dateSelector" class="cursorPointer">
+                            <select id="priorityNumber" class="cursorPointer">
+                                <option>Priority 1</option>
+                                <option>Priority 2</option>
+                                <option>Priority 3</option>
+                                <option>Priority 4</option>
+                            </select>
+                        </div>
+                        <div class="rightSide">
+                            <button id="addTask" type="submit" class="cursorPointer">Add Task</button>
+                        </div>
+                    </div>
+
+                </form>
+                
+            </div>
+        </main>
     </div>
 </body>
 </html>
