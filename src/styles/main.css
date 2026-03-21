@@ -1,3 +1,13 @@
+:root{
+    --form-padding: 8px;
+    --form-border-radius: 12px;
+    --milk-color: #fbf7f4;
+    --oat-color: #e5ded2;
+    --taupe-color: #a39382;
+    --mocha-color: #685d54;
+    --charcoal-color: #232323;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -37,6 +47,12 @@ form input:focus, form textarea:focus{
     margin-left: 20px;
     padding: var(--form-padding);
     border-radius: var(--form-border-radius);
+    
+}
+
+.rightSide > #addTask:hover{
+   color: var(--milk-color);
+   background-color: var(--charcoal-color);
 }
 
 
