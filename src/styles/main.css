@@ -1,13 +1,3 @@
-:root{
-    --form-padding: 8px;
-    --form-border-radius: 12px;
-    --milk-color: #fbf7f4;
-    --oat-color: #e5ded2;
-    --taupe-color: #a39382;
-    --mocha-color: #685d54;
-    --charcoal-color: #232323;
-}
-
 main {
     display: flex;
     justify-content: center;
