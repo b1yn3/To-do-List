@@ -1,0 +1,62 @@
+:root{
+    --form-padding: 8px;
+    --form-border-radius: 12px;
+    --milk-color: #fbf7f4;
+    --oat-color: #e5ded2;
+    --taupe-color: #a39382;
+    --mocha-color: #685d54;
+    --charcoal-color: #232323;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin: 5rem;
+}
+
+.taskContainer{
+    width: 70%;
+}
+
+/* FORM  AND THE 1ST AND 2ND ROW*/
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form textarea{
+    padding: var(--form-padding);
+    margin-bottom: 8px;
+    border-radius: var(--form-border-radius);
+}
+
+form input:focus, form textarea:focus{
+    outline: none;
+}
+
+
+/* THIRD ROW ON THE TASK MAKING*/
+
+.timeContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftSide > #priorityNumber{
+    margin-left: 20px;
+    padding: var(--form-padding);
+    border-radius: var(--form-border-radius);
+}
+
+
+#addTask{
+    padding: 8px;
+    font-weight: bold;
+    border-radius: var(--form-border-radius);
+}
+
+
+.cursorPointer{
+    cursor: pointer;
+}
