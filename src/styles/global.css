@@ -1,3 +1,11 @@
+:root{
+    --milk-color: #fbf7f4;
+    --oat-color: #e5ded2;
+    --taupe-color: #a39382;
+    --mocha-color: #685d54;
+    --charcoal-color: #232323;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,14 +21,18 @@
 aside {
     width: 20%;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: var(--oat-color);
     display: flex;
     flex-direction: column;
 }
 
+body{
+    background-color: var(--milk-color);
+}
+
 main{
     flex: 1;
-    height: 100vh;
-    background-color: white;
+    height: 100%;
+    
 }
 
