@@ -2,10 +2,7 @@ import "./styles/global.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
 
-
 let taskArray = []
-
-console.log("Hello");
 
 class ToDoItem {
     constructor(title, description, dueDate, priority){
@@ -117,8 +114,6 @@ function createUIforTask(){
 }
 
 function rendUIForTask(){
-    // check if it its iS working
-    console.log("Yo")
     const main = document.querySelector("main");
     const existingTaskUI = main.querySelector(".taskContainer");
 
@@ -129,10 +124,6 @@ function rendUIForTask(){
     const taskUI = createUIforTask();
     main.appendChild(taskUI)
 }
-
-
-// TEMPORARY JUST TO CHECK 
-// ================================================================== //
 
 const addTaskBtn = document.getElementById("addTaskBtn");
 addTaskBtn.addEventListener("click", rendUIForTask);
