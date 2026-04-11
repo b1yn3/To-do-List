@@ -87,4 +87,4 @@ function rendUIForTask(){
 
 
 
-export { createUIforTask, rendUIForTask };
+export { rendUIForTask };
