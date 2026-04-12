@@ -19,3 +19,9 @@ export function createSelect(optionsList, selectOptions = {}){
     return select;
 
 }
+
+export function getDateToday(){
+    const dateToday = new Date();
+
+    return dateToday.toISOString().split("T")[0];
+}
