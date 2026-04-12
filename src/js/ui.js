@@ -1,4 +1,4 @@
-import { createElement, createSelect } from "./utils.js";
+import { createElement, createSelect, getDateToday } from "./utils.js";
 
 function createUIforTask(){
     const divTaskContainer = createElement("div", {
@@ -35,10 +35,10 @@ function createUIforTask(){
         type: "date",
         id: "dateSelector",
         className: "cursorPointer",
+        min: getDateToday(),
         required: true
     });
-
-
+    
     const prioritySelect = createSelect(
         [
             {value: "1", label: "Priority 1"},
@@ -63,6 +63,20 @@ function createUIforTask(){
         className: "cursorPointer"
     });
 
+    taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!taskForm.checkValidity()) {
+            taskForm.reportValidity();
+            return;
+        }
+        const title = titleTxt.value;
+        const description = descriptionTxt.value;
+        
+        console.log(title, description);
+
+        taskForm.reset();
+    });
+
     divRightSide.appendChild(divaddTask)
     divleftSide.append(dateSelector, prioritySelect);
     divTimeContainer.append(divleftSide, divRightSide);
@@ -84,6 +98,7 @@ function rendUIForTask(){
     const taskUI = createUIforTask();
     main.appendChild(taskUI)
 }
+
 
 
 
