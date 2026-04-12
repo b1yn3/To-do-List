@@ -36,9 +36,10 @@ function createUIforTask(){
         id: "dateSelector",
         className: "cursorPointer",
         min: getDateToday(),
+        value: getDateToday(),
         required: true
     });
-    
+
     const prioritySelect = createSelect(
         [
             {value: "1", label: "Priority 1"},
@@ -69,12 +70,9 @@ function createUIforTask(){
             taskForm.reportValidity();
             return;
         }
-        const title = titleTxt.value;
-        const description = descriptionTxt.value;
-        
-        console.log(title, description);
 
         taskForm.reset();
+        dateSelector.value = getDateToday();
     });
 
     divRightSide.appendChild(divaddTask)
@@ -87,7 +85,7 @@ function createUIforTask(){
     return divTaskContainer;
 }
 
-function rendUIForTask(){
+function renderUIForTask(){
     const main = document.querySelector("main");
     const existingTaskUI = main.querySelector(".taskContainer");
 
@@ -102,4 +100,4 @@ function rendUIForTask(){
 
 
 
-export { rendUIForTask };
+export { renderUIForTask };

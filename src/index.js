@@ -1,7 +1,7 @@
 import "./styles/global.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
-import { rendUIForTask } from "./js/ui.js";
+import { renderUIForTask } from "./js/ui.js";
 
 let taskArray = []
 
@@ -15,4 +15,4 @@ class ToDoItem {
 }
 
 const addTaskBtn = document.getElementById("addTaskBtn");
-addTaskBtn.addEventListener("click", rendUIForTask);
+addTaskBtn.addEventListener("click", renderUIForTask);
