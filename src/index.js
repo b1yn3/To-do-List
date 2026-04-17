@@ -1,7 +1,7 @@
 import "./styles/global.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
-import { renderUIForTask } from "./js/ui.js";
+import { renderUIForTask, toggleSidebar } from "./js/ui.js";
 
 let taskArray = []
 
@@ -16,3 +16,6 @@ class ToDoItem {
 
 const addTaskBtn = document.getElementById("addTaskBtn");
 addTaskBtn.addEventListener("click", renderUIForTask);
+
+const toggleSide = document.getElementById("toggle-sidebarButton");
+toggleSide.addEventListener("click", toggleSidebar);

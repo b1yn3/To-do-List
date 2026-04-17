@@ -97,6 +97,10 @@ function renderUIForTask(){
     main.appendChild(taskUI)
 }
 
+export function toggleSidebar(){
+    console.log("Yo")
+}
+
 
 
 
