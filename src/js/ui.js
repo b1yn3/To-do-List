@@ -97,11 +97,9 @@ function renderUIForTask(){
     main.appendChild(taskUI)
 }
 
-export function toggleSidebar(){
-    console.log("Yo")
+function toggleSidebar(){
+    const aside = document.querySelector("aside");
+    aside.classList.toggle("collapsed");
 }
 
-
-
-
-export { renderUIForTask };
+export { renderUIForTask, toggleSidebar };

@@ -70,3 +70,28 @@ img {
 .title{
     margin: 10px;
 }
+
+/* TRANSITION */
+
+aside {
+    transition: width 0.3s ease;
+}
+
+aside.collapsed {
+    width: 3%;
+}
+
+aside.collapsed .username, 
+aside.collapsed .project-list,
+aside.collapsed .sidebar-button button span  {
+    display: none;
+}
+
+aside.collapsed .sidebar-button button img{
+    margin-left: 5px;
+    width: 20px;
+}
+
+aside.collapsed .toggle-sidebar {
+    margin-left: -10px;
+}
