@@ -1,7 +1,8 @@
 import "./styles/global.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
-import { renderUIForTask, toggleSidebar } from "./js/ui.js";
+import "./styles/completed.css";
+import { renderUIForTask, toggleSidebar, renderUIforCompleted } from "./js/ui.js";
 
 let taskArray = []
 
@@ -16,6 +17,9 @@ class ToDoItem {
 
 const addTaskBtn = document.getElementById("addTaskBtn");
 addTaskBtn.addEventListener("click", renderUIForTask);
+
+const completedTaskBtn = document.getElementById("completedTaskBtn");
+completedTaskBtn.addEventListener("click", renderUIforCompleted);
 
 const toggleSide = document.getElementById("toggle-sidebarButton");
 toggleSide.addEventListener("click", toggleSidebar);
