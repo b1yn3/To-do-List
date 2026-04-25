@@ -3,6 +3,9 @@
     --margin-task: 25px;
     --margin-task-description: 15px;
     --container-color: #c07d19;
+    --task-color: #5adcb5;
+    --border-color: #0F0326;
+    --strikethrough-text: red;
 }
 
 .completed-container {
@@ -20,9 +23,9 @@
 
 .completedTask{
     margin: var(--margin-task);
-    background-color: aqua;
+    background-color: var(--task-color);
     padding: 5px;
-    border: 2px red solid;
+    border: 2px  var(--border-color) solid;
     border-radius: 12px;
 }
 
@@ -36,7 +39,7 @@
 }
 
 .completedTaskHead h3 {
-    text-decoration: line-through red 3px;
+    text-decoration: line-through var(--strikethrough-text) 2px;
 }
 
 .completedDescription{
