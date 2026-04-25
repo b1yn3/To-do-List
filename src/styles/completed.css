@@ -2,12 +2,13 @@
     --margin-bottom-container: 20px;
     --margin-task: 25px;
     --margin-task-description: 15px;
+    --container-color: #c07d19;
 }
 
 .completed-container {
     width: 80%;
     height: 600px;
-    background-color: pink;
+    background-color: var(--container-color);
     border-radius: 6px;
     padding: 12px;
     overflow: auto;
@@ -36,4 +37,8 @@
 
 .completedTaskHead h3 {
     text-decoration: line-through red 3px;
+}
+
+.completedDescription{
+    margin: 10px;
 }

@@ -1,9 +1,6 @@
 :root{
-    --milk-color: #fbf7f4;
-    --oat-color: #e5ded2;
-    --taupe-color: #a39382;
-    --mocha-color: #685d54;
-    --charcoal-color: #232323;
+    --background-color: #0E1116;
+    --side-bar-color: rgb(255, 255, 255);
 }
 
 * {
@@ -21,13 +18,13 @@
 aside {
     width: 20%;
     height: 100vh;
-    background-color: var(--oat-color);
+    background-color: var(--side-bar-color);
     display: flex;
     flex-direction: column;
 }
 
 body{
-    background-color: var(--milk-color);
+    background-color: var(--background-color);
 }
 
 main{
