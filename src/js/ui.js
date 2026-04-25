@@ -131,18 +131,28 @@ function createUIforCompleted(){
     });
 
 
-    // completedTaskHead children 
+    // completedTaskHead children
+    const titleh3 = document.createElement("h3");
     const completedTitle = createElement("div", {
         className: "completedTitle",
     });
+    titleh3.classList.add('completedTitle');
+
     const completedDate = createElement("div", {
         className: "completedDate",
     });
+    const dateh5 = document.createElement("h5");
+    dateh5.classList.add('completedDate');
+
+    // TEMPORARY
+    titleh3.innerHTML = "Errands";
+    dateh5.innerHTML = "04/30/2026";
+    completedDescription.innerHTML = "Adsafasdfasdfas";
 
 
     completedContainer.append(completedName, completedTask);
     completedTask.append(completedTaskHead, completedDescription);
-    completedTaskHead.append(completedTitle, completedDate);
+    completedTaskHead.append(titleh3, dateh5);
 
     return completedContainer;
 }
