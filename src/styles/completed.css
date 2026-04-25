@@ -1,0 +1,39 @@
+:root{
+    --margin-bottom-container: 20px;
+    --margin-task: 25px;
+    --margin-task-description: 15px;
+}
+
+.completed-container {
+    width: 80%;
+    height: 600px;
+    background-color: pink;
+    border-radius: 6px;
+    padding: 12px;
+    overflow: auto;
+}
+
+.completed-container h2 {
+    margin-bottom: var(--margin-bottom-container);
+}
+
+.completedTask{
+    margin: var(--margin-task);
+    background-color: aqua;
+    padding: 5px;
+    border: 2px red solid;
+    border-radius: 12px;
+}
+
+.completedTask p {
+    margin: var(--margin-task-description);
+}
+
+.completedTaskHead {
+    display: flex;
+    justify-content: space-between;
+}
+
+.completedTaskHead h3 {
+    text-decoration: line-through red 3px;
+}
