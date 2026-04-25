@@ -1,5 +1,7 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
 
+// Add Task
+
 function createUIforTask(){
     const divTaskContainer = createElement("div", {
         className: "taskContainer",
@@ -91,6 +93,8 @@ function renderUIForTask(){
 
     if (existingTaskUI) {
         return;
+    } else {
+        main.innerHTML = "";
     }
 
     const taskUI = createUIforTask();
@@ -102,4 +106,61 @@ function toggleSidebar(){
     aside.classList.toggle("collapsed");
 }
 
-export { renderUIForTask, toggleSidebar };
+// Inbox 
+
+
+// Completed Tasks
+
+function createUIforCompleted(){
+    const completedContainer = createElement("div", {
+        className: "completed-container",
+    });
+
+    const completedName = document.createElement("h2");
+    completedName.innerHTML = "Completed Tasks"
+    const completedTask = createElement("div", {
+        className: "completedTask",
+    });
+    
+    // completedTask children
+    const completedDescription = createElement("div", {
+        className: "completedDescription",
+    });
+    const completedTaskHead = createElement("div", {
+        className: "completedTaskHead",
+    });
+
+
+    // completedTaskHead children 
+    const completedTitle = createElement("div", {
+        className: "completedTitle",
+    });
+    const completedDate = createElement("div", {
+        className: "completedDate",
+    });
+
+
+    completedContainer.append(completedName, completedTask);
+    completedTask.append(completedTaskHead, completedDescription);
+    completedTaskHead.append(completedTitle, completedDate);
+
+    return completedContainer;
+}
+
+function renderUIforCompleted(){
+    const main = document.querySelector("main");
+    const existingCompleted = main.querySelector("completed-container");
+
+    if(existingCompleted){
+        return;
+    } else {
+        main.innerHTML = "";
+    }
+
+    const compUI = createUIforCompleted();
+    main.appendChild(compUI)
+
+
+}
+
+export { renderUIForTask, toggleSidebar, renderUIforCompleted };
