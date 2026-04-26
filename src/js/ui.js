@@ -161,7 +161,7 @@ function createUIforCompleted(){
 
 function renderUIforCompleted(){
     const main = document.querySelector("main");
-    const existingCompleted = main.querySelector("completed-container");
+    const existingCompleted = main.querySelector(".completed-container");
 
     if(existingCompleted){
         return;
