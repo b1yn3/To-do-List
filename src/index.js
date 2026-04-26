@@ -4,16 +4,6 @@ import "./styles/main.css";
 import "./styles/completed.css";
 import { renderUIForTask, toggleSidebar, renderUIforCompleted } from "./js/ui.js";
 
-let taskArray = []
-
-class ToDoItem {
-    constructor(title, description, dueDate, priority){
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-    }
-}
 
 const addTaskBtn = document.getElementById("addTaskBtn");
 addTaskBtn.addEventListener("click", renderUIForTask);
