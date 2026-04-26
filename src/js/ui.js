@@ -1,4 +1,5 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
+import { saveData } from "./task.js";
 
 // Add Task
 
@@ -72,6 +73,7 @@ function createUIforTask(){
             taskForm.reportValidity();
             return;
         }
+        saveData(titleTxt.value, descriptionTxt.value, dateSelector.value, prioritySelect.value);
 
         taskForm.reset();
         dateSelector.value = getDateToday();
