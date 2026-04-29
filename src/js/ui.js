@@ -175,4 +175,7 @@ function renderUIforCompleted(){
 
 }
 
+// Make the UI creation resuable and make it just one function
+// Do the other buttons and connect it to localStorage
+
 export { renderUIForTask, toggleSidebar, renderUIforCompleted };
