@@ -113,13 +113,7 @@ function toggleSidebar(){
 
 // Completed Tasks
 
-function createUIforCompleted(){
-    const completedContainer = createElement("div", {
-        className: "completed-container",
-    });
-
-    const completedName = document.createElement("h2");
-    completedName.innerHTML = "Completed Tasks"
+function createUIforCompleted(task){
     const completedTask = createElement("div", {
         className: "completedTask",
     });
@@ -147,16 +141,14 @@ function createUIforCompleted(){
     dateh5.classList.add('completedDate');
 
     // TEMPORARY
-    titleh3.innerHTML = "Errands";
-    dateh5.innerHTML = "04/30/2026";
-    completedDescription.innerHTML = "Adsafasdfasdfas";
+    titleh3.innerHTML = task.title
+    dateh5.innerHTML = task.date
+    completedDescription.innerHTML = task.description
 
-
-    completedContainer.append(completedName, completedTask);
     completedTask.append(completedTaskHead, completedDescription);
     completedTaskHead.append(titleh3, dateh5);
 
-    return completedContainer;
+    return completedTask;
 }
 
 function renderUIforCompleted(){
@@ -169,10 +161,23 @@ function renderUIforCompleted(){
         main.innerHTML = "";
     }
 
-    const compUI = createUIforCompleted();
-    main.appendChild(compUI)
+    let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
 
+    const completedContainer = createElement("div", {
+        className: "completed-container",
+    });
+    const completedName = document.createElement("h2");
+    completedName.innerHTML = "Completed Tasks";
+    completedContainer.appendChild(completedName);
 
+    taskArray.forEach(task => {
+        if(task.isCompleted){
+            const taskUI = createUIforCompleted(task);
+            completedContainer.appendChild(taskUI);
+        }
+    });
+
+    main.appendChild(completedContainer);
 }
 
 // Make the UI creation resuable and make it just one function
