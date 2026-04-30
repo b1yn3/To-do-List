@@ -1,0 +1,30 @@
+:root{
+    --container-color: #c07d19;
+    --task-color: #5adcb5;
+    --border-color: #0F0326;
+    --light-color: #FFFFFF;
+    --bradius-size: 12px;
+}
+
+.inboxContainer {
+    width: 80%;
+    height: 600px;
+    background-color: var(--container-color);
+    border-radius: var(--bradius-size);
+    display: flex;
+    flex-direction: column;
+}
+
+.announcementContainer{
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 12px 12px 0px 0px;
+    background-color: var(--light-color);
+}
+
+.announcementBox{
+    margin: 10px;
+    padding: 12px;
+    background-color: lightcyan;
+    border-radius: var(--bradius-size);
+}
