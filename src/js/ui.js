@@ -110,6 +110,53 @@ function toggleSidebar(){
 
 // Inbox 
 
+function createUIforInbox(){
+    const inboxContainer = createElement("div", {
+        className: "inboxContainer",
+    });
+    const announcementContainer = createElement("div", {
+        className: "announcementContainer",
+    });
+    const announcementBox = createElement("div", {
+        className: "announcementBox",
+    });
+
+    const announceH = document.createElement("h1");
+    announceH.textContent = "ANNOUNCEMENT";
+
+    const announceBoxH = document.createElement("h3");
+    announceBoxH.textContent = "What's New?";
+
+    const pA = document.createElement("p");
+    pA.textContent = "Try out the new My Projects addition for To Do App!";
+    const pB = document.createElement("p");
+    pB.textContent = "Projects: A way to group related tasks!";
+    const pC = document.createElement("p");
+    pC.textContent = "My Project: Add your tasks to a project of your own choosing!";
+    const pD = document.createElement("p");
+    pD.textContent = "Bug fixes: fixed the bug where non-completed items appear in Completed Tasks";
+
+    announcementContainer.appendChild(announceH);
+    announcementBox.append(announceBoxH, pA, pB, pC, pD);
+    inboxContainer.append(announcementContainer, announcementBox);
+
+    return inboxContainer;
+}
+
+function renderUIForInbox(){
+    const main = document.querySelector("main");
+    const existingTaskUI = main.querySelector(".inboxContainer");
+
+    if (existingTaskUI) {
+        return;
+    } else {
+        main.innerHTML = "";
+    }
+
+    const taskUI = createUIforInbox();
+    main.appendChild(taskUI)
+}
+
 
 // Completed Tasks
 
@@ -183,4 +230,4 @@ function renderUIforCompleted(){
 // Make the UI creation resuable and make it just one function
 // Do the other buttons and connect it to localStorage
 
-export { renderUIForTask, toggleSidebar, renderUIforCompleted };
+export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox };
