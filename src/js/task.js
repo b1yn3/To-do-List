@@ -4,7 +4,8 @@ export function saveData(taskTitle, taskDescription, taskDate, taskPriority){
     taskArray.push({title: taskTitle, 
         description: taskDescription, 
         date: taskDate, 
-        priority: taskPriority
+        priority: taskPriority,
+        isCompleted: false
     });
 
     localStorage.setItem("tasks", JSON.stringify(taskArray));
