@@ -3,7 +3,7 @@ import  "./styles/inbox.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
 import "./styles/completed.css";
-import { renderUIForTask, toggleSidebar, renderUIforCompleted } from "./js/ui.js";
+import { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox } from "./js/ui.js";
 
 
 const addTaskBtn = document.getElementById("addTaskBtn");
@@ -14,3 +14,6 @@ completedTaskBtn.addEventListener("click", renderUIforCompleted);
 
 const toggleSide = document.getElementById("toggle-sidebarButton");
 toggleSide.addEventListener("click", toggleSidebar);
+
+const toggleInbox = document.getElementById("inboxBtn");
+toggleInbox.addEventListener("click", renderUIForInbox);
