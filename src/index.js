@@ -1,4 +1,5 @@
 import "./styles/global.css";
+import  "./styles/inbox.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
 import "./styles/completed.css";
