@@ -2,6 +2,7 @@ import "./styles/global.css";
 import  "./styles/inbox.css";
 import "./styles/sidebar.css";
 import "./styles/main.css";
+import "./styles/today.css";
 import "./styles/completed.css";
 import { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox } from "./js/ui.js";
 
