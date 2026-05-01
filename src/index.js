@@ -4,7 +4,7 @@ import "./styles/sidebar.css";
 import "./styles/main.css";
 import "./styles/today.css";
 import "./styles/completed.css";
-import { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox } from "./js/ui.js";
+import { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, renderUIforToday } from "./js/ui.js";
 
 
 const addTaskBtn = document.getElementById("addTaskBtn");
@@ -18,3 +18,6 @@ toggleSide.addEventListener("click", toggleSidebar);
 
 const toggleInbox = document.getElementById("inboxBtn");
 toggleInbox.addEventListener("click", renderUIForInbox);
+
+const toggleToday = document.getElementById("todayTaskBtn");
+toggleToday.addEventListener("click", renderUIforToday);
