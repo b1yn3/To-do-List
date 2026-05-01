@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+:root{
+    --container-color: #c07d19;
+    --task-color: #5adcb5;
+    --border-color: #0F0326;
+    --light-color: #FFFFFF;
+    --bradius-size: 12px;
+}
+
+
+.todayContainer {
+    width: 80%;
+    height: 600px;
+    background-color: var(--container-color);
+    border-radius: var(--bradius-size);
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.todayHeader {
+    padding: 6px;
+    background-color: red;
+
+}
+
+.todayTask{
+    margin: 12px;
+    border-radius: var(--bradius-size);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.todayTaskHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: white;
+    border-radius: var(--bradius-size) var(--bradius-size) 0 0;
+}
+
+.todayTaskDescriptionContainer{
+   background-color: white;
+}
+.todayTaskDescriptionContainer p {
+    margin: 10px;
+}
+
+.todayComplete {
+    display: flex;
+    justify-content: right;
+}
+
+.todayBtn{
+    margin: 6px;
+    padding: 4px;
+    background-color: white;
+    border-radius: var(--bradius-size);
+    cursor: pointer;
+}
+
+.todayBtn:hover {
+    color: white;
+    background-color: black;
+}
