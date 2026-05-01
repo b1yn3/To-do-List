@@ -157,6 +157,106 @@ function renderUIForInbox(){
     main.appendChild(taskUI)
 }
 
+// Today
+
+function createUIforToday(task){
+   // todayTask
+   const todayTask = createElement("div", {
+        className: "todayTask",
+    });
+
+    // todayTaskHeader and children
+
+    const todayTaskHeader = createElement("div", {
+        className: "todayTaskHeader",
+    });
+    const todayTaskTitle = createElement("div", {
+        className: "todayTaskTitle",
+    });
+
+    const todayTaskDate = createElement("div", {
+        className: "todayTaskDate",
+    });
+
+    // today description
+
+    const todayTaskDescriptionContainer = createElement("div", {
+        className: "todayTaskDescriptionContainer",
+    });
+
+    const descriptionP = document.createElement("p");
+    todayTaskTitle.textContent = task.title;
+    todayTaskDate.textContent = task.date;
+    descriptionP.textContent = task.description;
+
+    // Button
+    const todayComplete = createElement("div", {
+        className: "todayComplete",
+    });
+
+    const todayBtn = createElement("button", {
+        className: "todayBtn",
+    });
+    todayBtn.textContent = 'Complete Task';
+    todayBtn.addEventListener("click", () => {
+        let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        const updatedTasks = taskArray.map(t => {
+            if (t.id === task.id) {
+                return { ...t, isCompleted: true };
+            }
+            return t;
+        });
+
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+        renderUIforToday();
+    });
+      
+    todayComplete.appendChild(todayBtn);
+    todayTaskDescriptionContainer.appendChild(descriptionP);
+    todayTaskHeader.append(todayTaskTitle, todayTaskDate);
+    todayTask.append(todayTaskHeader, todayTaskDescriptionContainer, todayComplete);
+
+
+    return todayTask;
+}
+
+function renderUIforToday(){
+    const main = document.querySelector("main");
+    const existingToday = main.querySelector(".todayContainer");
+
+    if(existingToday){
+        existingToday.remove();
+    } else {
+        main.innerHTML = "";
+    }
+
+    const todayContainer = createElement("div", {
+        className: "todayContainer",
+    });
+    
+    const todayHeader = createElement("div", {
+        className: "todayHeader",
+    });
+   const headerh2 = document.createElement("h2");
+   headerh2.textContent = "Task today:";
+
+   todayHeader.appendChild(headerh2);
+   todayContainer.appendChild(todayHeader);
+
+   let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
+
+   taskArray.forEach(task => {
+        if(!task.isCompleted){
+            const todayUI = createUIforToday(task);
+            todayContainer.appendChild(todayUI);
+        }
+    });
+
+    main.appendChild(todayContainer)
+
+}
 
 // Completed Tasks
 
@@ -188,9 +288,9 @@ function createUIforCompleted(task){
     dateh5.classList.add('completedDate');
 
     // TEMPORARY
-    titleh3.innerHTML = task.title
-    dateh5.innerHTML = task.date
-    completedDescription.innerHTML = task.description
+    titleh3.textContent = task.title
+    dateh5.textContent = task.date
+    completedDescription.textContent = task.description
 
     completedTask.append(completedTaskHead, completedDescription);
     completedTaskHead.append(titleh3, dateh5);
@@ -214,7 +314,7 @@ function renderUIforCompleted(){
         className: "completed-container",
     });
     const completedName = document.createElement("h2");
-    completedName.innerHTML = "Completed Tasks";
+    completedName.textContent = "Completed Tasks";
     completedContainer.appendChild(completedName);
 
     taskArray.forEach(task => {
@@ -230,4 +330,4 @@ function renderUIforCompleted(){
 // Make the UI creation resuable and make it just one function
 // Do the other buttons and connect it to localStorage
 
-export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox };
+export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, renderUIforToday };
