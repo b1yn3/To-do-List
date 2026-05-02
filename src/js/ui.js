@@ -1,6 +1,28 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
 import { saveData } from "./task.js";
 
+// Render
+
+function renderPage(){
+
+}
+
+function getMode(){
+    
+}
+
+function addTask({container, taskCondition, createUI}){
+    let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
+    const today = getDateToday();
+    taskArray.forEach(task => {
+        if(taskCondition(task)){
+            const newTask = createUI(task);
+            container.appendChild(newTask);
+            
+        }
+    });
+}
+
 // Add Task
 
 function createUIforTask(){
@@ -233,7 +255,7 @@ function renderUIforToday(){
     }
 
     const todayContainer = createElement("div", {
-        className: "todayContainer",
+        className: "containerBase",
     });
     
     const todayHeader = createElement("div", {
@@ -246,15 +268,13 @@ function renderUIforToday(){
    todayContainer.appendChild(todayHeader);
 
    let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
-   const today = new Date().toISOString().split("T")[0];
+   const today = getDateToday();
 
-   taskArray.forEach(task => {
-        if(!task.isCompleted && task.date <= today){
-            const todayUI = createUIforCompletingTask(task);
-            todayContainer.appendChild(todayUI);
-        }
+   addTask({
+        container: todayContainer,
+        taskCondition: (task) => !task.isCompleted && task.date <= today,
+        createUI: createUIforCompletingTask
     });
-
     main.appendChild(todayContainer)
 
 }
