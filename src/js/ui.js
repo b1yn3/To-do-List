@@ -1,6 +1,39 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
 import { saveData } from "./task.js";
 
+// Render
+
+function renderPage({headerContent, condition, createUI}){
+    const main = document.querySelector("main");
+    const existingType = main.querySelector(".containerBase");
+
+    if(existingType){
+        existingType.remove();
+    } else {
+        main.innerHTML = "";
+    }
+
+    const todayContainer = createElement("div", {
+        className: "containerBase",
+    });
+    
+    const todayHeader = createElement("div", {
+        className: "todayHeader",
+    });
+   const headerh2 = document.createElement("h2");
+   headerh2.textContent = headerContent;
+
+   todayHeader.appendChild(headerh2);
+   todayContainer.appendChild(todayHeader);
+
+   addTask({
+        container: todayContainer,
+        taskCondition: condition,
+        createUI: createUI
+    });
+    main.appendChild(todayContainer)
+}
+
 function addTask({container, taskCondition, createUI}){
     let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
     const today = getDateToday();
@@ -10,6 +43,24 @@ function addTask({container, taskCondition, createUI}){
             container.appendChild(newTask);
             
         }
+    });
+}
+
+function upcomingTask(){
+    const today = getDateToday();
+    renderPage({
+        headerContent: "Upcoming Tasks:",
+        condition: (task) => !task.isCompleted && task.date > today,
+        createUI: createUIforUpcomingTask
+    });
+}
+
+function todayTasks(){
+    const today = getDateToday();
+    renderPage({
+        headerContent: "Overdue and Today's Tasks:",
+        condition: (task) => !task.isCompleted && task.date <= today,
+        createUI: createUIforCompletingTask
     });
 }
 
@@ -222,7 +273,70 @@ function createUIforCompletingTask(task){
 
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-        renderUIforToday();
+        todayTasks();
+    });
+      
+    todayComplete.appendChild(todayBtn);
+    todayTaskDescriptionContainer.appendChild(descriptionP);
+    todayTaskHeader.append(todayTaskTitle, todayTaskDate);
+    todayTask.append(todayTaskHeader, todayTaskDescriptionContainer, todayComplete);
+
+
+    return todayTask;
+}
+
+function createUIforUpcomingTask(task){
+   // todayTask
+   const todayTask = createElement("div", {
+        className: "todayTask",
+    });
+
+    // todayTaskHeader and children
+
+    const todayTaskHeader = createElement("div", {
+        className: "todayTaskHeader",
+    });
+    const todayTaskTitle = createElement("div", {
+        className: "todayTaskTitle",
+    });
+
+    const todayTaskDate = createElement("div", {
+        className: "todayTaskDate",
+    });
+
+    // today description
+
+    const todayTaskDescriptionContainer = createElement("div", {
+        className: "todayTaskDescriptionContainer",
+    });
+
+    const descriptionP = document.createElement("p");
+    todayTaskTitle.textContent = task.title;
+    todayTaskDate.textContent = task.date;
+    descriptionP.textContent = task.description;
+
+    // Button
+    const todayComplete = createElement("div", {
+        className: "todayComplete",
+    });
+
+    const todayBtn = createElement("button", {
+        className: "todayBtn",
+    });
+    todayBtn.textContent = 'Complete Task';
+    todayBtn.addEventListener("click", () => {
+        let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        const updatedTasks = taskArray.map(t => {
+            if (t.id === task.id) {
+                return { ...t, isCompleted: true };
+            }
+            return t;
+        });
+
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+        upcomingTask();
     });
       
     todayComplete.appendChild(todayBtn);
@@ -306,4 +420,4 @@ function renderUIforCompleted(){
 // Make the UI creation resuable and make it just one function
 // Do the other buttons and connect it to localStorage
 
-export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, upcomingTask, todayTask };
+export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, upcomingTask, todayTasks };
