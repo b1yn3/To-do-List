@@ -1,39 +1,6 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
 import { saveData } from "./task.js";
 
-// Render
-
-function renderPage({headerContent, condition, createUI}){
-    const main = document.querySelector("main");
-    const existingType = main.querySelector(".containerBase");
-
-    if(existingType){
-        existingType.remove();
-    } else {
-        main.innerHTML = "";
-    }
-
-    const todayContainer = createElement("div", {
-        className: "containerBase",
-    });
-    
-    const todayHeader = createElement("div", {
-        className: "todayHeader",
-    });
-   const headerh2 = document.createElement("h2");
-   headerh2.textContent = headerContent;
-
-   todayHeader.appendChild(headerh2);
-   todayContainer.appendChild(todayHeader);
-
-   addTask({
-        container: todayContainer,
-        taskCondition: condition,
-        createUI: createUIforCompletingTask
-    });
-    main.appendChild(todayContainer)
-}
-
 function addTask({container, taskCondition, createUI}){
     let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
     const today = getDateToday();
@@ -43,22 +10,6 @@ function addTask({container, taskCondition, createUI}){
             container.appendChild(newTask);
             
         }
-    });
-}
-
-function upcomingTask(){
-    renderPage({
-        headerContent: "Upcoming Tasks:",
-        condition: (task) => !task.isCompleted && task.date > today,
-        createUI: createUIforCompletingTask
-    });
-}
-
-function todayTask(){
-    renderPage({
-        headerContent: "OverDue and Today's Tasks:",
-        condition: (task) => !task.isCompleted && task.date <= today,
-        createUI: createUIforCompletingTask
     });
 }
 
