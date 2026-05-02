@@ -1,7 +1,7 @@
 import { createElement, createSelect, getDateToday } from "./utils.js";
 import { saveData } from "./task.js";
 
-// Render
+// Come back and make this more reusable with reusable functions --> March 2, 2026 <--
 
 function renderPage({headerContent, condition, createUI}){
     const main = document.querySelector("main");
@@ -348,7 +348,7 @@ function createUIforUpcomingTask(task){
     return todayTask;
 }
 
-// Completed Tasks
+// Completed Tasks --> Make this and the upcoming and todya task be just one function so that its rreausble.
 
 function createUIforCompleted(task){
     const completedTask = createElement("div", {
@@ -376,8 +376,6 @@ function createUIforCompleted(task){
     });
     const dateh5 = document.createElement("h5");
     dateh5.classList.add('completedDate');
-
-    // TEMPORARY
     titleh3.textContent = task.title
     dateh5.textContent = task.date
     completedDescription.textContent = task.description
@@ -417,7 +415,5 @@ function renderUIforCompleted(){
     main.appendChild(completedContainer);
 }
 
-// Make the UI creation resuable and make it just one function
-// Do the other buttons and connect it to localStorage
 
 export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, upcomingTask, todayTasks };
