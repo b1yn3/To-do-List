@@ -3,12 +3,35 @@ import { saveData } from "./task.js";
 
 // Render
 
-function renderPage(){
+function renderPage({headerContent, condition, createUI}){
+    const main = document.querySelector("main");
+    const existingType = main.querySelector(".containerBase");
 
-}
+    if(existingType){
+        existingType.remove();
+    } else {
+        main.innerHTML = "";
+    }
 
-function getMode(){
+    const todayContainer = createElement("div", {
+        className: "containerBase",
+    });
     
+    const todayHeader = createElement("div", {
+        className: "todayHeader",
+    });
+   const headerh2 = document.createElement("h2");
+   headerh2.textContent = headerContent;
+
+   todayHeader.appendChild(headerh2);
+   todayContainer.appendChild(todayHeader);
+
+   addTask({
+        container: todayContainer,
+        taskCondition: condition,
+        createUI: createUIforCompletingTask
+    });
+    main.appendChild(todayContainer)
 }
 
 function addTask({container, taskCondition, createUI}){
@@ -20,6 +43,22 @@ function addTask({container, taskCondition, createUI}){
             container.appendChild(newTask);
             
         }
+    });
+}
+
+function upcomingTask(){
+    renderPage({
+        headerContent: "Upcoming Tasks:",
+        condition: (task) => !task.isCompleted && task.date > today,
+        createUI: createUIforCompletingTask
+    });
+}
+
+function todayTask(){
+    renderPage({
+        headerContent: "OverDue and Today's Tasks:",
+        condition: (task) => !task.isCompleted && task.date <= today,
+        createUI: createUIforCompletingTask
     });
 }
 
@@ -179,7 +218,7 @@ function renderUIForInbox(){
     main.appendChild(taskUI)
 }
 
-// Today
+// Today and Upcoming
 
 function createUIforCompletingTask(task){
    // todayTask
@@ -242,41 +281,6 @@ function createUIforCompletingTask(task){
 
 
     return todayTask;
-}
-
-function renderUIforToday(){
-    const main = document.querySelector("main");
-    const existingToday = main.querySelector(".todayContainer");
-
-    if(existingToday){
-        existingToday.remove();
-    } else {
-        main.innerHTML = "";
-    }
-
-    const todayContainer = createElement("div", {
-        className: "containerBase",
-    });
-    
-    const todayHeader = createElement("div", {
-        className: "todayHeader",
-    });
-   const headerh2 = document.createElement("h2");
-   headerh2.textContent = "Task today:";
-
-   todayHeader.appendChild(headerh2);
-   todayContainer.appendChild(todayHeader);
-
-   let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
-   const today = getDateToday();
-
-   addTask({
-        container: todayContainer,
-        taskCondition: (task) => !task.isCompleted && task.date <= today,
-        createUI: createUIforCompletingTask
-    });
-    main.appendChild(todayContainer)
-
 }
 
 // Completed Tasks
@@ -351,4 +355,4 @@ function renderUIforCompleted(){
 // Make the UI creation resuable and make it just one function
 // Do the other buttons and connect it to localStorage
 
-export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, renderUIforToday };
+export { renderUIForTask, toggleSidebar, renderUIforCompleted, renderUIForInbox, upcomingTask, todayTask };
