@@ -246,9 +246,10 @@ function renderUIforToday(){
    todayContainer.appendChild(todayHeader);
 
    let taskArray = JSON.parse(localStorage.getItem("tasks")) || [];
+   const today = new Date().toISOString().split("T")[0];
 
    taskArray.forEach(task => {
-        if(!task.isCompleted){
+        if(!task.isCompleted && task.date <= today){
             const todayUI = createUIforToday(task);
             todayContainer.appendChild(todayUI);
         }
