@@ -159,7 +159,7 @@ function renderUIForInbox(){
 
 // Today
 
-function createUIforToday(task){
+function createUIforCompletingTask(task){
    // todayTask
    const todayTask = createElement("div", {
         className: "todayTask",
@@ -250,7 +250,7 @@ function renderUIforToday(){
 
    taskArray.forEach(task => {
         if(!task.isCompleted && task.date <= today){
-            const todayUI = createUIforToday(task);
+            const todayUI = createUIforCompletingTask(task);
             todayContainer.appendChild(todayUI);
         }
     });
